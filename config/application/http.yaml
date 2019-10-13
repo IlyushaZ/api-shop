@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+    App\:
+        resource: '%kernel.root_dir%/*'
+        exclude: '%kernel.root_dir%/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    App\Application\Http\:
+        resource: '%kernel.root_dir%/Application/Http'
+        tags: ['controller.service_arguments']

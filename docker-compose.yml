@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+  php:
+    build: ./docker/php
+    volumes:
+      - ./:/var/www:cached
+    ports:
+      - 9008:9006
+    depends_on:
+      - db
+  nginx:
+    image: nginx:latest
+    restart: always
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/config:/etc/nginx/conf.d
+      - ./docker/nginx/logs:/var/log/nginx
+    depends_on:
+      - php
+    ports:
+      - 8087:80
+  db:
+    image: postgres:latest
+    volumes:
+      - ./docker/storage/postgres:/data/postgres
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: project
+      PGDATA: /data/postgres

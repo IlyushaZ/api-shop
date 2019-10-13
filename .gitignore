@@ -21,5 +21,4 @@
 /docker/storage/
 /docker/nginx/logs
 
-.idea/
-
+.idea

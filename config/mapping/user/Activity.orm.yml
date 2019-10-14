@@ -1,0 +1,11 @@
+App\Domain\User\Entity\Activity:
+  type: embeddable
+  fields:
+    createdAt:
+      type: datetime_immutable
+    updatedAt:
+      type: datetime_immutable
+    isConfirmed:
+      type: boolean
+    isBlocked:
+      type: boolean

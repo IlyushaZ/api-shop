@@ -1,0 +1,19 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  http.listener.json_response:
+    class: App\Infrastructure\Http\Listener\JsonResponseListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.view, method: handle }
+
+  http.listener.serializable_exception:
+    class: App\Infrastructure\Http\Listener\SerializableExceptionListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception, method: handle }
+
+  http.listener.validation_exception:
+    class: App\Infrastructure\Http\Listener\ValidationExceptionListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception, method: handle }

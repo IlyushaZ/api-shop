@@ -1,0 +1,11 @@
+App\Domain\User\Entity\Contact:
+  type: embeddable
+  fields:
+    name:
+      type: string
+    email:
+      type: string
+      unique: true
+    phone:
+      type: string
+      unique: true

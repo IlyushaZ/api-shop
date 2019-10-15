@@ -1,0 +1,2 @@
+App\Domain\User\Entity\Client:
+  type: entity

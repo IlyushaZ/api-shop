@@ -1,3 +1,5 @@
 imports:
   - { resource: 'http/listeners.yaml' }
   - { resource: 'http/resolvers.yaml' }
+  - { resource: 'doctrine/repositories.yaml' }
+  - { resource: 'doctrine/services.yaml' }

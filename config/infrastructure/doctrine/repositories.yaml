@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  repositories:
+    namespace: App\Infrastructure\Doctrine\Repository\
+    resource: '%kernel.root_dir%/Infrastructure/Doctrine/Repository/**/*RepositoryImpl.php'
+    tags: ['doctrine.repository']

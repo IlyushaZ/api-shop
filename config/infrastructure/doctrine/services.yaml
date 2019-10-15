@@ -1,0 +1,9 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  service_implementations:
+    namespace: App\Infrastructure\Doctrine\Service\
+    resource: '%kernel.root_dir%/Infrastructure/Doctrine/Service/**/*ServiceImpl.php'
+    tags: ['domain.service']

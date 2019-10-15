@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\DependencyInjection\RepositoryCompiler;
+use App\DependencyInjection\ServiceCompiler;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
@@ -40,6 +42,9 @@ class Kernel extends BaseKernel
         $loader->load($confDir.'/{packages}/'.$this->environment.'/**/*'.self::CONFIG_EXTS, 'glob');
         $loader->load($confDir.'/{services}'.self::CONFIG_EXTS, 'glob');
         $loader->load($confDir.'/{services}_'.$this->environment.self::CONFIG_EXTS, 'glob');
+
+        $container->addCompilerPass(new RepositoryCompiler());
+        $container->addCompilerPass(new ServiceCompiler());
     }
 
     protected function configureRoutes(RouteCollectionBuilder $routes): void

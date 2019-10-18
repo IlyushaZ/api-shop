@@ -5,6 +5,7 @@ App\Domain\User\Entity\Activity:
       type: datetime_immutable
     updatedAt:
       type: datetime_immutable
+      nullable: true
     isConfirmed:
       type: boolean
     isBlocked:

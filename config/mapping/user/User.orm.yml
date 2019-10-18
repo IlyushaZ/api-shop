@@ -1,12 +1,17 @@
 App\Domain\User\Entity\User:
+  table: '`user`'
   type: entity
   inheritanceType: JOINED
   discriminatorColumn:
-    name: type
+    name: user_type
     type: string
   discriminatorMap:
     admin: App\Domain\User\Entity\Admin
     client: App\Domain\User\Entity\Client
+  fields:
+    id:
+      id: true
+      type: uuid
   embedded:
     contact:
       class: App\Domain\User\Entity\Contact
@@ -17,7 +22,3 @@ App\Domain\User\Entity\User:
     activity:
       class: App\Domain\User\Entity\Activity
       columnPrefix: false
-  fields:
-    id:
-      id: true
-      type: uuid

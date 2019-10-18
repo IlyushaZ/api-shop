@@ -3,6 +3,7 @@
 namespace App\Domain\User\Entity;
 
 use App\Domain\Common\Traits\Entity;
+use App\Infrastructure\Helper\ClassNameHelper;
 
 abstract class User
 {
@@ -30,5 +31,15 @@ abstract class User
     public function getContact(): Contact
     {
         return $this->contact;
+    }
+
+    public function getActivity(): Activity
+    {
+        return $this->activity;
+    }
+
+    public function getType(): string
+    {
+        return ClassNameHelper::getChildName(get_class($this));
     }
 }

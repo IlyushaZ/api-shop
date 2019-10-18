@@ -5,7 +5,7 @@ namespace App\Domain\Common\Traits;
 
 trait IsBlocked
 {
-    protected $isBlocked;
+    protected $isBlocked = false;
 
     public function block(): self
     {
@@ -15,6 +15,6 @@ trait IsBlocked
 
     public function isBlocked(): bool
     {
-        return $this->isBlocked();
+        return $this->isBlocked;
     }
 }

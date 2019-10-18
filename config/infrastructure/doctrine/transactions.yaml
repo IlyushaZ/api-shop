@@ -1,0 +1,11 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  App\Domain\Common\Impl\TransactionImpl:
+    arguments:
+      $entityManager: '@doctrine.orm.entity_manager'
+
+  App\Domain\Common\Transaction:
+    alias: App\Domain\Common\Impl\TransactionImpl

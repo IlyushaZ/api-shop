@@ -1,0 +1,8 @@
+App\Domain\User\Entity\Auth:
+  type: embeddable
+  fields:
+    login:
+      type: string
+      unique: true
+    password:
+      type: string

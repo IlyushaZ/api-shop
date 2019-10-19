@@ -1,0 +1,24 @@
+App\Domain\User\Entity\User:
+  table: '`user`'
+  type: entity
+  inheritanceType: JOINED
+  discriminatorColumn:
+    name: user_type
+    type: string
+  discriminatorMap:
+    admin: App\Domain\User\Entity\Admin
+    client: App\Domain\User\Entity\Client
+  fields:
+    id:
+      id: true
+      type: uuid
+  embedded:
+    contact:
+      class: App\Domain\User\Entity\Contact
+      columnPrefix: false
+    auth:
+      class: App\Domain\User\Entity\Auth
+      columnPrefix: false
+    activity:
+      class: App\Domain\User\Entity\Activity
+      columnPrefix: false

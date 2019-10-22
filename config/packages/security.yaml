@@ -2,6 +2,7 @@ services:
   _defaults:
     autowire: true
     autoconfigure: true
+    public: false
 
   security.user.user_provider:
     class: App\Application\Security\UserProvider
@@ -10,27 +11,44 @@ services:
   security.firewall.access_denied_handler:
     class: App\Application\Security\AccessDeniedHandler
 
+  App\Application\Security\LoggedUserProvider:
+    autowire: true
+
 security:
-    encoders:
-      App\Application\Security\UserAdapter:
-        algorithm: bcrypt
+  encoders:
+    App\Application\Security\SecurityAdapter:
+      algorithm: bcrypt
 
-    providers:
-      custom_user_provider:
-        id: security.user.user_provider
+  providers:
+    custom_user_provider:
+      id: security.user.user_provider
 
-    firewalls:
-        auth_management:
-          pattern: ^/auth
-          anonymous: true
-          stateless: true
+  firewalls:
+    register:
+      pattern: ^/register
+      stateless: true
+      anonymous: true
 
-        api:
-          pattern: ^/(?!auth)
-          anonymous: false
-          stateless: true
-          provider: custom_user_provider
-          access_denied_handler: security.firewall.access_denied_handler
-          guard:
-            authenticators:
-              - lexik_jwt_authentication.jwt_token_authenticator
+    token_management:
+      pattern: ^/auth/login
+      stateless: true
+      anonymous: true
+      json_login:
+        check_path: /auth/login
+        success_handler: lexik_jwt_authentication.handler.authentication_success
+        failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+    refresh:
+      pattern: ^/auth/token/refresh
+      stateless: true
+      anonymous: true
+
+    api:
+      pattern: ^/(?!auth)
+      anonymous: false
+      stateless: true
+      provider: custom_user_provider
+      access_denied_handler: security.firewall.access_denied_handler
+      guard:
+        authenticators:
+          - lexik_jwt_authentication.jwt_token_authenticator

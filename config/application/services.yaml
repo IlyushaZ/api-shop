@@ -1,6 +1,6 @@
 imports:
-    - { resource: 'http.yaml' }
-    - { resource: 'cqs.yaml' }
-    - { resource: 'cli.yaml' }
+  - { resource: 'http.yaml' }
+  - { resource: 'cqs.yaml' }
+  - { resource: 'cli.yaml' }
 
 

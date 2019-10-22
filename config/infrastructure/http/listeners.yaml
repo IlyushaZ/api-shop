@@ -1,7 +1,11 @@
+imports:
+  - { resource: 'jwt_listeners.yaml' }
+
 services:
   _defaults:
     autowire: true
     autoconfigure: true
+    public: false
 
   http.listener.json_response:
     class: App\Infrastructure\Http\Listener\JsonResponseListener

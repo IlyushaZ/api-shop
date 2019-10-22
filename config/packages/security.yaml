@@ -1,21 +1,54 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  security.user.user_provider:
+    class: App\Application\Security\UserProvider
+    autowire: true
+
+  security.firewall.access_denied_handler:
+    class: App\Application\Security\AccessDeniedHandler
+
+  App\Application\Security\LoggedUserProvider:
+    autowire: true
+
 security:
-    providers:
-        in_memory: { memory: null }
-    firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-        main:
-            anonymous: true
+  encoders:
+    App\Application\Security\SecurityAdapter:
+      algorithm: bcrypt
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
+  providers:
+    custom_user_provider:
+      id: security.user.user_provider
 
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
+  firewalls:
+    register:
+      pattern: ^/register
+      stateless: true
+      anonymous: true
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
-    access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+    token_management:
+      pattern: ^/auth/login
+      stateless: true
+      anonymous: true
+      json_login:
+        check_path: /auth/login
+        success_handler: lexik_jwt_authentication.handler.authentication_success
+        failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+    refresh:
+      pattern: ^/auth/token/refresh
+      stateless: true
+      anonymous: true
+
+    api:
+      pattern: ^/(?!auth)
+      anonymous: false
+      stateless: true
+      provider: custom_user_provider
+      access_denied_handler: security.firewall.access_denied_handler
+      guard:
+        authenticators:
+          - lexik_jwt_authentication.jwt_token_authenticator

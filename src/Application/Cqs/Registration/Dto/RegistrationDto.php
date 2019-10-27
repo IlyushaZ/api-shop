@@ -50,6 +50,4 @@ class RegistrationDto
      * @Assert\NotBlank()
      */
     public $phone;
-
-
 }

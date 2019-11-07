@@ -1,0 +1,23 @@
+App\Domain\Category\Entity\Category:
+  type: entity
+  fields:
+    id:
+      id: true
+      type: uuid
+    createdAt:
+      type: datetime_immutable
+    isRemoved:
+      type: boolean
+  embedded:
+    content:
+      class: App\Domain\Category\Entity\CategoryContent
+      columnPrefix: false
+  manyToOne:
+    parent:
+      cascade: ["persist", "remove"]
+      targetEntity: App\Domain\Category\Entity\Category
+      inversedBy: children
+  oneToMany:
+    children:
+      targetEntity: App\Domain\Category\Entity\Category
+      mappedBy: parent

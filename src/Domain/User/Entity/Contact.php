@@ -3,7 +3,7 @@
 namespace App\Domain\User\Entity;
 
 
-class Contact
+final class Contact
 {
     private $name;
     private $email;

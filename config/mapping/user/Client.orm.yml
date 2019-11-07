@@ -1,2 +1,8 @@
 App\Domain\User\Entity\Client:
   type: entity
+  oneToMany:
+    balanceHistory:
+      mappedBy: client
+      targetEntity: App\Domain\Balance\Entity\BalanceOperation
+      joinColumn: operation_id
+      referencedColumnName: id

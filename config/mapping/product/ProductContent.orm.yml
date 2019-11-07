@@ -1,0 +1,7 @@
+App\Domain\Product\Entity\ProductContent:
+  type: embeddable
+  fields:
+    title:
+      type: string
+    description:
+      type: string

@@ -15,7 +15,7 @@ trait Entity
         return $this;
     }
 
-    public function getId(): string
+    public function getId(): Uuid
     {
         return $this->id;
     }

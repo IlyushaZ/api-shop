@@ -1,0 +1,7 @@
+App\Domain\Category\Entity\CategoryContent:
+  type: embeddable
+  fields:
+    title:
+      type: string
+    description:
+      type: string

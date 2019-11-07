@@ -3,7 +3,7 @@
 namespace App\Domain\User\Entity;
 
 
-class Auth
+final class Auth
 {
     private $login;
     private $password;

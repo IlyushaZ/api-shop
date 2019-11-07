@@ -1,0 +1,17 @@
+App\Domain\Balance\Entity\BalanceOperation:
+  type: entity
+  fields:
+    id:
+      id: true
+      type: uuid
+    amount:
+      type: money
+    type:
+      type: string
+  manyToOne:
+    client:
+      targetEntity: App\Domain\User\Entity\Client
+      inversedBy: balanceHistory
+      joinColumn:
+        name: client_id
+        referencedColumnName: id

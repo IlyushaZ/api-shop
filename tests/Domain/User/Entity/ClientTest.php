@@ -7,6 +7,7 @@ use App\Domain\User\Entity\Activity;
 use App\Domain\User\Entity\Auth;
 use App\Domain\User\Entity\Client;
 use App\Domain\User\Entity\Contact;
+use Doctrine\Common\Collections\Collection;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 
@@ -46,5 +47,10 @@ class ClientTest extends TestCase
     public function testGetId()
     {
         $this->assertEquals(Uuid::isValid($this->client->getId()), true);
+    }
+
+    public function testGetBalanceHistory()
+    {
+        $this->assertInstanceOf(Collection::class, $this->client->getBalanceHistory());
     }
 }

@@ -7,7 +7,7 @@ use App\Domain\Common\Traits\IsBlocked;
 use App\Domain\Common\Traits\IsConfirmed;
 use App\Domain\Common\Traits\UpdatedAt;
 
-class Activity
+final class Activity
 {
     use CreatedAt, UpdatedAt, IsConfirmed, IsBlocked;
 

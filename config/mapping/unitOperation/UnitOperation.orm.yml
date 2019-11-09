@@ -1,0 +1,21 @@
+App\Domain\UnitOperation\Entity\UnitOperation:
+  type: entity
+  fields:
+    id:
+      id: true
+      type: uuid
+    createdAt:
+      type: datetime_immutable
+    type:
+      type: string
+  manyToOne:
+    unitOfProduct:
+      targetEntity: App\Domain\UnitOfProduct\Entity\UnitOfProduct
+      joinColumn:
+        name: unit_id
+        referencedColumnName: id
+    client:
+      targetEntity: App\Domain\User\Entity\Client
+      joinColumn:
+        name: client_id
+        referencedColumnName: id

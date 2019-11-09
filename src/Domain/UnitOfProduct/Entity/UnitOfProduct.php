@@ -15,12 +15,12 @@ class UnitOfProduct
     use Entity, CreatedAt, UpdatedAt, IsAvailable;
 
     public const STATUS_IN_STOCK = 'inStock';
-    public const STATUS_IN_BASKET = 'inBasket';
+    public const STATUS_IN_CART = 'inCart';
     public const STATUS_PURCHASED = 'purchased';
 
     public const UNIT_STATUSES = [
         self::STATUS_IN_STOCK,
-        self::STATUS_IN_BASKET,
+        self::STATUS_IN_CART,
         self::STATUS_PURCHASED,
     ];
 

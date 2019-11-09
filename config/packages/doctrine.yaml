@@ -41,3 +41,13 @@ doctrine:
             type: yml
             prefix: 'App\Domain\UnitOfProduct\Entity'
             dir: '%kernel.project_dir%/config/mapping/unitOfProduct'
+          cartItem:
+            is_bundle: false
+            type: yml
+            prefix: 'App\Domain\CartItem\Entity'
+            dir: '%kernel.project_dir%/config/mapping/cartItem'
+          unitOperation:
+            is_bundle: false
+            type: yml
+            prefix: 'App\Domain\UnitOperation\Entity'
+            dir: '%kernel.project_dir%/config/mapping/unitOperation'

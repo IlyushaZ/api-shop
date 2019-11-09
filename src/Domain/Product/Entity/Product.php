@@ -86,4 +86,9 @@ class Product
         $this->categories->removeElement($category);
         return $this;
     }
+
+    public function getAddedBy(): Admin
+    {
+        return $this->addedBy;
+    }
 }

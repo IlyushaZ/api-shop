@@ -2,7 +2,7 @@
 
 ## To execute application run:
 * **sudo make first-init**
-* **sudo execute-bash**
+* **sudo make execute-bash**
 
 ### Inside executed bash run:
 * **mkdir -p config/jwt**

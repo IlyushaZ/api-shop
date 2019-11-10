@@ -1,0 +1,15 @@
+nelmio_api_doc:
+    documentation:
+        host: shop-api.local
+        schemes: [http, https]
+        info:
+            title: Simple shop API using Symfony 4.
+            version: 1.0.0
+        securityDefinitions:
+            Bearer:
+                type: apiKey
+                description: 'Value: Bearer {jwt}'
+                name: Authorization
+                in: header
+        security:
+            - Bearer: []

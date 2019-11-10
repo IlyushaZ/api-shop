@@ -10,6 +10,14 @@ build:
 execute-bash:
 	docker-compose exec php bash
 
-first-init:
-	build up
+composer-install:
+	docker-compose exec php composer install
+
+migrations:
+	docker-compose exec php php bin/console d:m:m --no-interaction
+
+run-tests:
+	docker-compose exec php php bin/phpunit
+
+first-init: build up composer-install migrations
 

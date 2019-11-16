@@ -33,7 +33,7 @@ class Category
         return $this->content;
     }
 
-    public function getParent(): Category
+    public function getParent(): ?Category
     {
         return $this->parent;
     }

@@ -15,7 +15,7 @@ class LoggedUserProvider
         $this->tokenStorage = $tokenStorage;
     }
 
-    public function provideEntity(): User
+    public function provideEntity(): ?User
     {
         $adapter = $this->provideAdapter();
 
@@ -26,7 +26,7 @@ class LoggedUserProvider
         return null;
     }
 
-    public function provideAdapter(): SecurityAdapter
+    public function provideAdapter(): ?SecurityAdapter
     {
         $token = $this->tokenStorage->getToken();
 

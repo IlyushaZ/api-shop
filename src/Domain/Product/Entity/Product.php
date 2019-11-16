@@ -45,14 +45,26 @@ class Product
         return $this->content;
     }
 
-    public function getCategory(): Category
+    public function changeContent(ProductContent $content): self
     {
-        return $this->category;
+        $this->content = $content;
+        return $this;
+    }
+
+    public function getCategories(): Collection
+    {
+        return $this->categories;
     }
 
     public function getPrice(): Money
     {
         return $this->price;
+    }
+
+    public function changePrice(Money $price): self
+    {
+        $this->price = $price;
+        return $this;
     }
 
     public function getUnits(): Collection

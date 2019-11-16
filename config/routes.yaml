@@ -1,3 +1,8 @@
+admin:
+  resource: '../src/Application/Http/Admin/'
+  type: annotation
+  prefix: '/admin'
+
 lexik_jwt_login:
   path: /auth/login
 
